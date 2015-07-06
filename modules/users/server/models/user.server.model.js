@@ -82,7 +82,6 @@ var UserSchema = new Schema({
 	},
 	username: {
 		type: String,
-		unique: 'testing error message',
 		trim: true
 	},
 	password: {
