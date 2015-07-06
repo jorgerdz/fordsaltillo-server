@@ -18,7 +18,7 @@ var validateLocalStrategyProperty = function(property) {
  * A Validation function for local strategy password
  */
 var validateLocalStrategyPassword = function(password) {
-	return (this.provider !== 'local' || (password && password.length > 6));
+	return (this.provider !== 'local' || (password));
 };
 
 /**
@@ -37,6 +37,38 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
 	},
+	gender: {
+		type: String,
+		trim: true,
+		default: 'M',
+		validate: [validateLocalStrategyProperty, 'Please fill in your gender']
+	},
+	age: {
+		type: Number,
+		trim: true,
+		default: '',
+		validate: [validateLocalStrategyProperty, 'Please fill in your age']
+	},
+	phone: {
+		type: String,
+		trim: true,
+		default: ''
+	},
+	imei: {
+		type: String,
+		trim: true,
+		default: '',
+	},
+	os: {
+		type: String,
+		trim: true,
+		default: ''
+	},
+	macAddress: {
+		type: String,
+		trim: true,
+		default: ''
+	},
 	displayName: {
 		type: String,
 		trim: true
@@ -51,7 +83,6 @@ var UserSchema = new Schema({
 	username: {
 		type: String,
 		unique: 'testing error message',
-		required: 'Please fill in a username',
 		trim: true
 	},
 	password: {
