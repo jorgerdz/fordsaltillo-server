@@ -9,9 +9,7 @@ var path = require('path'),
 	Notification = mongoose.model('Notification');
 
 exports.forUser = function(req, res){
-	console.log(req.session);
 	Notification.find({}).exec(function(err, notification) {
-		console.log(notification)
 		if(err)
 			req.send(400);
 
@@ -19,11 +17,10 @@ exports.forUser = function(req, res){
 
 		notification.forEach(function(n){
 			n.users.forEach(function(data){
-				//if(data.id == req.session.passport.user)
+				if(data.id == req.session.passport.user)
 					obj.push(n)
 			});
 		});
-		console.log(obj);
 		res.jsonp({notifications : obj});
 	});
 };
