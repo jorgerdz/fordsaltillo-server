@@ -1,0 +1,29 @@
+<section>
+    
+    <div class="modal-header">
+        <h2>Enviar Notificación</h2>
+    </div><!-- / MODAL HEADER -->
+    
+    
+    <div class="modal-body">
+        <div ng-show="!error && !success && available">
+            <input ng-model="message.title" class="form-control" placeholder="Título" />
+            <textarea ng-model="message.description" style="margin-top:2%" rows="5" class="form-control" placeholder="Descripcion"></textarea>
+        </div>
+        <div ng-show="error">
+            <h3>Algo malo ocurrió.</h3>
+        </div>
+        <div ng-show="success">
+            <h3>Notificaciones enviadas.</h3>
+        </div>
+        <div ng-show="!available">
+            <h3>No elegiste ningún usuario.</h3>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn" ng-click="ok()">Cancelar</button>
+        <button ng-click="send()" class="btn" ng-show="message.title && message.description" ng-click="send()">Enviar</button>
+    </div>
+
+</section>
